@@ -1,4 +1,5 @@
 import AddProductPage from "../AddProductPage/AddProductPage";
+import EditProductPage from "../EditProductPage/EditProductPage";
 import FavoritesPage from "../FavoritesPage/FavoritesPage";
 import MainLayout from "../layout/MainLayout";
 import MainPage from "../MainPage/MainPage";
@@ -15,6 +16,7 @@ const AppRouter = () => {
         <Route index element={<MainPage />} />
         <Route path="products" element={<ProductsPage />} />
         <Route path="products/create" element={<AddProductPage />} />
+        <Route path="products/edit" element={<EditProductPage />} />
         <Route path="products/:id" element={<ProductPage />} />
         <Route path="favorites" element={<FavoritesPage />} />
         <Route path="*" element={<NotFoundPage />} />

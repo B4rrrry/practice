@@ -11,14 +11,16 @@ const NavMenu = () => {
       <NavLink to="/products" className="m-auto  mb-[10px]">
         Products
       </NavLink>
-      
+
       <NavLink to="/products/create" className="m-auto  mb-[10px]">
         Create Product
+      </NavLink>
+      <NavLink to="/products/edit" className="m-auto  mb-[10px]">
+        Edit Product
       </NavLink>
       <NavLink to="/favorites" className=" ml-auto mr-auto ">
         Favorites
       </NavLink>
-      
     </div>
   );
 };

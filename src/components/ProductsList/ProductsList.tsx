@@ -28,15 +28,16 @@ const ProductsList: FC<ProductsListProps> = (props) => {
   const productsFiltered =
     filter != "all" ? data.filter((item) => item.category == filter) : data;
   console.log(status, "status", isLoading, isFetching);
+  console.log(productsFiltered);
   return (
     <div className="container ">
+      {isFetching && !isLoading && <p className="block">Updating...</p>}
       <div className={`${cls.ProductsList} flex flex-wrap`}>
-        {(isLoading || isFetching) && <Loader />}
+        {isLoading && <Loader />}
         {isError && (
           <p className="text-xl text-red-700 font-bold">Ошибка в запросе</p>
         )}
         {isSuccess &&
-          !isFetching &&
           productsFiltered.map((item) => (
             <ProductCard
               category={item.category}

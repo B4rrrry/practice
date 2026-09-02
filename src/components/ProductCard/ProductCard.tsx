@@ -2,6 +2,8 @@ import type { FC } from "react";
 import cls from "./ProductCard.module.scss";
 import { useFavorites } from "./../../store";
 import { Link } from "react-router";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteProduct } from "../../api/products";
 
 export interface ProductCardProps {
   title: string;
@@ -15,30 +17,53 @@ const ProductCard: FC<ProductCardProps> = (props) => {
   const favorites = useFavorites((state) => state.favorites);
   const createFavorite = useFavorites((state) => state.setFavorite);
   const removeFavorite = useFavorites((state) => state.removeFavorite);
-  const product = {title,price,category,id};
+  const product = { title, price, category, id };
   const isFavorite =
     favorites.filter((favorite) => favorite.id == id).length >= 1 ? 1 : 0;
-  console.log('render')
+
+  const queryClient = useQueryClient();
+  const deleteProductMutation = useMutation({
+    mutationFn: deleteProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+    },
+  });
+
   return (
     <div
       className={`${cls.Product} bg-gray-300 p-[10px] rounded-[10px] mr-[10px] mb-[10px] [&:nth-last-child(1)]:mb-0 [&:nth-last-child(1)]:mr-0`}
     >
       <div className="header">
-       
-        <Link to={`/products/${id}`}><p className="name">{title}</p></Link> 
+        <Link to={`/products/${id}`}>
+          <p className="name">{title}</p>
+        </Link>
         <p className="category">{category}</p>
       </div>
       <div className="img size-[150px] bg-gray-400 rounded-sm"></div>
       <p>{price}</p>
       {!isFavorite ? (
-        <button onClick={() => createFavorite(product)}className="bg-gray-400 p-2 rounded-sm text-white">
+        <button
+          onClick={() => createFavorite(product)}
+          className="bg-gray-400 p-2 rounded-sm text-white"
+        >
           Add to favorites
         </button>
       ) : (
-        <button onClick={() => removeFavorite(product)} className="bg-gray-400 p-2 rounded-sm text-white">
+        <button
+          onClick={() => removeFavorite(product)}
+          className="bg-gray-400 p-2 rounded-sm text-white"
+        >
           Remove from favorites
         </button>
       )}
+      <button
+        onClick={() => {
+          deleteProductMutation.mutate(id);
+        }}
+        className="ml-3 bg-gray-400 p-2 rounded-sm text-white"
+      >
+        Delete Product
+      </button>
     </div>
   );
 };

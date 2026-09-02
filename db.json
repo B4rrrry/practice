@@ -4,13 +4,12 @@
       "id": "1",
       "title": "Mechanical Keyboard",
       "price": 120,
-      "category": "electronics"
-    },
-    {
-      "id": "2",
-      "title": "Gaming Mouse",
-      "price": 70,
-      "category": "electronics"
+      "category": "electronics",
+      "product": {
+        "title": "Mechanical Keyboard!",
+        "category": "electronics",
+        "price": 1200
+      }
     },
     {
       "id": "3",
@@ -37,22 +36,15 @@
       "id": "jc9lumhEPRs"
     },
     {
-      "title": "Kek",
+      "title": "KEk",
       "category": "electronics",
-      "price": 123321,
-      "id": "tie4YIyu9gE"
-    },
-    {
-      "title": "e4343",
-      "category": "electronics",
-      "price": 34344,
-      "id": "NWQcUDtk9vI"
-    },
-    {
-      "title": "213",
-      "category": "clothes",
-      "price": 1231,
-      "id": "7qc1fESbx_A"
+      "price": 123333,
+      "id": "9RhvcBb7jv0",
+      "product": {
+        "title": "KEk",
+        "category": "electronics",
+        "price": 123333333
+      }
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
