@@ -1,26 +1,19 @@
-import { Link } from "react-router";
-import NavLink from "../NavLink/NavLink";
+import CustomLink from "../CustomLink/CustomLink";
+import cls from "./NavMenu.module.scss";
 
 const NavMenu = () => {
   return (
-    <div className="flex flex-col ">
-      <NavLink to="/" className=" ml-auto mr-auto mb-[10px]">
-        Home
-      </NavLink>
-
-      <NavLink to="/products" className="m-auto  mb-[10px]">
-        Products
-      </NavLink>
-
-      <NavLink to="/products/create" className="m-auto  mb-[10px]">
-        Create Product
-      </NavLink>
-      <NavLink to="/products/edit" className="m-auto  mb-[10px]">
-        Edit Product
-      </NavLink>
-      <NavLink to="/favorites" className=" ml-auto mr-auto ">
-        Favorites
-      </NavLink>
+    <div className={`${cls.NavMenu} flex flex-col ml-2 mt-2`}>
+      <CustomLink to="/" className="mb-2.5">
+        Dashboard
+      </CustomLink>
+      <CustomLink to="/users" className="mb-2.5">
+        Users
+      </CustomLink>
+      <CustomLink to="/tasks" className="mb-2.5">
+        Tasks
+      </CustomLink>
+      <CustomLink to="/settings">Settings</CustomLink>
     </div>
   );
 };
