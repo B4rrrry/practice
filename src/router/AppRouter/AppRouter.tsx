@@ -2,11 +2,11 @@ import { Route, Routes } from "react-router";
 import cls from "./AppRouter.module.scss";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import DashboardPage from "../../pages/DashboardPage/DashboardPage";
-import SettingsPage from "../../pages/SettingsPage/SettingsPage";
 import TasksPage from "../../pages/TasksPage/TasksPage";
 import UsersPage from "../../pages/UsersPage/UsersPage";
 import UserPage from "../../pages/UserPage/UserPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import TaskPage from "../../pages/TaskPage/TaskPage";
 
 const AppRouter = () => {
   return (
@@ -14,10 +14,10 @@ const AppRouter = () => {
       <Routes>
         <Route element={<MainLayout />} path="/">
           <Route index element={<DashboardPage />} />
-          <Route element={<SettingsPage />} path="settings" />
           <Route element={<TasksPage />} path="tasks" />
+          <Route element={<TaskPage />} path="tasks/:id" />
           <Route element={<UsersPage />} path="users" />
-          <Route element={<UserPage />} path="user/:id" />
+          <Route element={<UserPage />} path="users/:id" />
           <Route element={<NotFoundPage />} path="*" />
         </Route>
       </Routes>

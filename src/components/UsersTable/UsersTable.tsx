@@ -10,7 +10,7 @@ interface UsersTableProps {
   onDelete?: (user: User) => void;
 }
 
-const UsersTable: FC<UsersTableProps> = ({ users, onEdit, onDelete }) => {
+const UsersTable: FC<UsersTableProps> = ({ users }) => {
   return (
     <div className={cls.wrapper}>
       <table className={cls.table}>
@@ -48,7 +48,7 @@ const UsersTable: FC<UsersTableProps> = ({ users, onEdit, onDelete }) => {
               </td>
               <td>
                 <div className={cls.actions}>
-                  <CustomLink to="/user/1">View</CustomLink>
+                  <CustomLink to={`/users/${user.id}`}>View</CustomLink>
                 </div>
               </td>
             </tr>
