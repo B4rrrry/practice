@@ -5,3 +5,8 @@ export type User = {
   role: "admin" | "manager" | "user";
   status: "active" | "blocked";
 };
+
+
+enum FiltersForUsers {
+  ALL = 'ALL'
+}

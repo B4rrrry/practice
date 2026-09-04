@@ -1,7 +1,8 @@
-import type { FC } from "react";
+  import type { FC } from "react";
 import type { User } from "../../types/user";
 
 import cls from "./UsersTable.module.scss";
+import CustomLink from "../CustomLink/CustomLink";
 
 interface UsersTableProps {
   users: User[];
@@ -47,16 +48,7 @@ const UsersTable: FC<UsersTableProps> = ({ users, onEdit, onDelete }) => {
               </td>
               <td>
                 <div className={cls.actions}>
-                  <button type="button" onClick={() => onEdit?.(user)}>
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    className={cls.deleteButton}
-                    onClick={() => onDelete?.(user)}
-                  >
-                    Delete
-                  </button>
+                  <CustomLink to="/user/1">View</CustomLink>
                 </div>
               </td>
             </tr>
