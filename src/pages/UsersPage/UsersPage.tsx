@@ -3,7 +3,6 @@ import CustomSearch from "../../components/CustomSearch/CustomSearch";
 import Title from "../../components/Title/Title";
 import UsersTable from "../../components/UsersTable/UsersTable";
 import { users } from "../../mockData/users";
-import cls from "./UsersPage.module.scss";
 import CustomButton from "../../components/CustomButton/CustomButton";
 
 type FiltersForUsers = "all" | "active" | "blocked";
@@ -17,38 +16,23 @@ const UsersPage = () => {
   const onSearch = (e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>) =>
     setSearchValue(e.target.value);
 
-  const filteredUsers = useMemo(() => {
-    if (filter != "all") {
-      const newUsers = users.filter((user) => user.status === filter);
-
-      return newUsers;
-    }
-    return users;
-  }, [filter]);
-
-  const searchedUsers = useMemo(() => {
-    if (searchValue.trim() != "") {
-      const usersFiltered = filteredUsers.filter(
+  const sortedUsers = useMemo(() => {
+    return users
+      .filter((user) => filter === "all" || user.status === filter)
+      .filter(
         (user) =>
-          user.email.includes(searchValue) || user.name.includes(searchValue),
+          user.email.toLowerCase().includes(searchValue.toLowerCase()) ||
+          user.name.toLowerCase().includes(searchValue.toLowerCase()),
+      )
+      .toSorted((a, b) =>
+        sortNames === "asc"
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name),
       );
-      return usersFiltered;
-    }
-    return filteredUsers;
-  }, [searchValue, filteredUsers]);
-
-  const sortUsers = useMemo(() => {
-    const currentUsers = [...searchedUsers];
-    const users =
-      sortNames === "asc"
-        ? currentUsers.sort((a, b) => a.name.localeCompare(b.name))
-        : currentUsers.sort((a, b) => b.name.localeCompare(a.name));
-
-        return users;
-  }, [searchValue, filteredUsers,sortNames]);
+  }, [searchValue, filter, sortNames]);
 
   return (
-    <div className={cls.UsersPage}>
+    <div>
       <Title className="mb-5">Users</Title>
       <div className="mb-3 flex">
         <div className="mr-5">
@@ -96,7 +80,7 @@ const UsersPage = () => {
           </div>
         </div>
       </div>
-      <UsersTable users={sortUsers} />
+      <UsersTable users={sortedUsers} />
     </div>
   );
 };

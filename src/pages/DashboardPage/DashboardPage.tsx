@@ -1,10 +1,9 @@
 import KPICard from "../../components/KPICard/KPICard";
 import Title from "../../components/Title/Title";
-import cls from "./DashboardPage.module.scss";
 
 const DashboardPage = () => {
   return (
-    <div className={cls.DashboardPage}>
+    <div>
       <Title className="mb-3.5 ">Dashboard Statistic</Title>
       <div className="flex">
         <KPICard

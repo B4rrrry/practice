@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router";
 import Title from "../../components/Title/Title";
-import cls from "./UserPage.module.scss";
 import CustomButton from "../../components/CustomButton/CustomButton";
 
 const UserPage = () => {
@@ -8,7 +7,7 @@ const UserPage = () => {
   const navigate = useNavigate()
 
   return (
-    <div className={cls.UserPage}>
+    <div>
       <Title className="mb-5">Users Name{id}</Title>
       <p className="text-3xl font-bold mb-3">Information</p>
       <div className="mb-4 flex">

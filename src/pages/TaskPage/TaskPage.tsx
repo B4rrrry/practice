@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import Title from "../../components/Title/Title";
 import { tasks } from "../../mockData/tasks";
-import cls from "./TaskPage.module.scss";
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -11,7 +10,7 @@ const TaskPage = () => {
 
   if (!task) {
     return (
-      <div className={cls.TaskPage}>
+      <div>
         <Title className="mb-5">Task not found</Title>
         <CustomButton onClick={() => navigate("/tasks")}>
           Back to Tasks
@@ -21,7 +20,7 @@ const TaskPage = () => {
   }
 
   return (
-    <div className={cls.TaskPage}>
+    <div>
       <Title className="mb-5">{task.title}</Title>
       <p className="text-3xl font-bold mb-3">Information</p>
       <div className="mb-4 flex">

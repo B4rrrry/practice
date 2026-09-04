@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router";
-import cls from "./AppRouter.module.scss";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import DashboardPage from "../../pages/DashboardPage/DashboardPage";
 import TasksPage from "../../pages/TasksPage/TasksPage";
@@ -10,7 +9,7 @@ import TaskPage from "../../pages/TaskPage/TaskPage";
 
 const AppRouter = () => {
   return (
-    <div className={cls.AppRouter}>
+    <div>
       <Routes>
         <Route element={<MainLayout />} path="/">
           <Route index element={<DashboardPage />} />

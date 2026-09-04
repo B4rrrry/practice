@@ -1,8 +1,6 @@
 import type { FC } from "react";
 import { NavLink, type NavLinkProps } from "react-router";
 
-import cls from "./CustomLink.module.scss";
-
 const CustomLink: FC<NavLinkProps> = ({ className, ...props }) => {
   return (
     <NavLink
@@ -12,7 +10,6 @@ const CustomLink: FC<NavLinkProps> = ({ className, ...props }) => {
           typeof className === "function" ? className(state) : className;
 
         return [
-          cls.root,
           state.isActive ? "font-bold text-xl" : "text-xl",
           passedClassName,
         ]

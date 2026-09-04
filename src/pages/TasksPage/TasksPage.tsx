@@ -5,7 +5,6 @@ import TasksTable from "../../components/TasksTable/TasksTable";
 import Title from "../../components/Title/Title";
 import { tasks } from "../../mockData/tasks";
 import type { TaskStatus } from "../../types/task";
-import cls from "./TasksPage.module.scss";
 
 type TaskFilter = "all" | TaskStatus;
 type SortDirection = "asc" | "desc";
@@ -34,7 +33,7 @@ const TasksPage = () => {
   }, [filter, searchValue, sortDirection]);
 
   return (
-    <div className={cls.TasksPage}>
+    <div>
       <Title className="mb-5">Tasks</Title>
 
       <div className="mb-3 flex">
