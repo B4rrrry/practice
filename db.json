@@ -1,0 +1,42 @@
+{
+  "users": [
+    { "id": "1", "name": "Alex Morgan", "email": "alex.morgan@example.com", "role": "admin", "status": "active" },
+    { "id": "2", "name": "Emma Wilson", "email": "emma.wilson@example.com", "role": "manager", "status": "active" },
+    { "id": "3", "name": "Daniel Kim", "email": "daniel.kim@example.com", "role": "user", "status": "blocked" },
+    { "id": "4", "name": "Sophia Brown", "email": "sophia.brown@example.com", "role": "manager", "status": "active" },
+    { "id": "5", "name": "Liam Davis", "email": "liam.davis@example.com", "role": "user", "status": "active" },
+    { "id": "6", "name": "Olivia Martinez", "email": "olivia.martinez@example.com", "role": "user", "status": "blocked" },
+    { "id": "7", "name": "Noah Anderson", "email": "noah.anderson@example.com", "role": "manager", "status": "active" },
+    { "id": "8", "name": "Ava Thompson", "email": "ava.thompson@example.com", "role": "user", "status": "active" },
+    { "id": "9", "name": "Ethan Taylor", "email": "ethan.taylor@example.com", "role": "user", "status": "blocked" },
+    { "id": "10", "name": "Mia Clark", "email": "mia.clark@example.com", "role": "admin", "status": "active" },
+    { "id": "11", "name": "Lucas Lewis", "email": "lucas.lewis@example.com", "role": "user", "status": "active" },
+    { "id": "12", "name": "Isabella Walker", "email": "isabella.walker@example.com", "role": "manager", "status": "active" }
+  ],
+  "tasks": [
+    { "id": "1", "title": "Prepare monthly report", "status": "in-progress", "priority": "high", "userId": "1", "assignee": "Alex Morgan" },
+    { "id": "2", "title": "Update user documentation", "status": "todo", "priority": "medium", "userId": "2", "assignee": "Emma Wilson" },
+    { "id": "3", "title": "Fix dashboard layout", "status": "done", "priority": "high", "userId": "3", "assignee": "Daniel Kim" },
+    { "id": "4", "title": "Review access permissions", "status": "todo", "priority": "low", "userId": "4", "assignee": "Sophia Brown" },
+    { "id": "5", "title": "Create analytics widgets", "status": "in-progress", "priority": "high", "userId": "5", "assignee": "Liam Davis" },
+    { "id": "6", "title": "Audit notification settings", "status": "done", "priority": "medium", "userId": "6", "assignee": "Olivia Martinez" },
+    { "id": "7", "title": "Improve search performance", "status": "in-progress", "priority": "high", "userId": "7", "assignee": "Noah Anderson" },
+    { "id": "8", "title": "Add empty states", "status": "todo", "priority": "low", "userId": "8", "assignee": "Ava Thompson" },
+    { "id": "9", "title": "Test responsive navigation", "status": "done", "priority": "medium", "userId": "9", "assignee": "Ethan Taylor" },
+    { "id": "10", "title": "Configure query cache", "status": "in-progress", "priority": "medium", "userId": "10", "assignee": "Mia Clark" },
+    { "id": "11", "title": "Document API endpoints", "status": "todo", "priority": "medium", "userId": "11", "assignee": "Lucas Lewis" },
+    { "id": "12", "title": "Review error handling", "status": "done", "priority": "high", "userId": "12", "assignee": "Isabella Walker" },
+    { "id": "13", "title": "Add loading skeletons", "status": "todo", "priority": "low", "userId": "2", "assignee": "Emma Wilson" },
+    { "id": "14", "title": "Refactor table components", "status": "in-progress", "priority": "medium", "userId": "4", "assignee": "Sophia Brown" },
+    { "id": "15", "title": "Check keyboard navigation", "status": "done", "priority": "high", "userId": "7", "assignee": "Noah Anderson" },
+    { "id": "16", "title": "Update dashboard statistics", "status": "done", "priority": "medium", "userId": "10", "assignee": "Mia Clark" },
+    { "id": "17", "title": "Clean unused dependencies", "status": "todo", "priority": "low", "userId": "11", "assignee": "Lucas Lewis" },
+    { "id": "18", "title": "Verify production build", "status": "done", "priority": "high", "userId": "1", "assignee": "Alex Morgan" }
+  ],
+  "stats": {
+    "usersCount": 12,
+    "activeUsers": 9,
+    "tasksCount": 18,
+    "completedTasks": 7
+  }
+}

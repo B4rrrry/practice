@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "server": "json-server --watch db.json --port 3001",
     "component": "node scripts/create-component.mjs"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.4",
     "globals": "^17.11.0",
+    "json-server": "^1.0.0-beta.15",
     "sass-embedded": "^1.103.1",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.67.0",
