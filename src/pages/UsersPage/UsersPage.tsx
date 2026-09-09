@@ -4,6 +4,9 @@ import Title from "../../components/Title/Title";
 import UsersTable from "../../components/UsersTable/UsersTable";
 import { users } from "../../mockData/users";
 import CustomButton from "../../components/CustomButton/CustomButton";
+import Preloader from "../../components/Preloader/Preloader";
+import { useQuery } from "@tanstack/react-query";
+import { fetchUsers } from "../../api/users";
 
 type FiltersForUsers = "all" | "active" | "blocked";
 type SortNames = "asc" | "desc";
@@ -13,11 +16,20 @@ const UsersPage = () => {
   const [filter, setFilter] = useState<FiltersForUsers>("all");
   const [sortNames, setSortNames] = useState<SortNames>("asc");
 
+  const {
+    data = [],
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: ["users"],
+    queryFn: fetchUsers,
+  });
+  
   const onSearch = (e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>) =>
     setSearchValue(e.target.value);
 
   const sortedUsers = useMemo(() => {
-    return users
+    return data
       .filter((user) => filter === "all" || user.status === filter)
       .filter(
         (user) =>
@@ -29,10 +41,11 @@ const UsersPage = () => {
           ? a.name.localeCompare(b.name)
           : b.name.localeCompare(a.name),
       );
-  }, [searchValue, filter, sortNames]);
+  }, [data, searchValue, filter, sortNames]);
 
   return (
     <div>
+      {isPending && <Preloader />}
       <Title className="mb-5">Users</Title>
       <div className="mb-3 flex">
         <div className="mr-5">
@@ -80,7 +93,11 @@ const UsersPage = () => {
           </div>
         </div>
       </div>
-      <UsersTable users={sortedUsers} />
+      {isError && <p className="font-bold text-3xl">Error</p>}
+      {data.length === 0 && !isPending && !isError && (
+        <p className="font-bold text-3xl">Empty users</p>
+      )}
+      {data.length > 0 && <UsersTable users={sortedUsers} />}
     </div>
   );
 };

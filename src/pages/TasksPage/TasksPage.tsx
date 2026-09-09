@@ -3,8 +3,11 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomSearch from "../../components/CustomSearch/CustomSearch";
 import TasksTable from "../../components/TasksTable/TasksTable";
 import Title from "../../components/Title/Title";
-import { tasks } from "../../mockData/tasks";
+
 import type { TaskStatus } from "../../types/task";
+import { useQuery } from "@tanstack/react-query";
+import { fetchTasks } from "../../api/tasks";
+import Preloader from "../../components/Preloader/Preloader";
 
 type TaskFilter = "all" | TaskStatus;
 type SortDirection = "asc" | "desc";
@@ -14,10 +17,19 @@ const TasksPage = () => {
   const [filter, setFilter] = useState<TaskFilter>("all");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
 
+  const {
+    data = [],
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: ["tasks"],
+    queryFn: fetchTasks,
+  });
+
   const visibleTasks = useMemo(() => {
     const normalizedSearch = searchValue.trim().toLocaleLowerCase();
 
-    return tasks
+    return data
       .filter((task) => filter === "all" || task.status === filter)
       .filter(
         (task) =>
@@ -30,11 +42,13 @@ const TasksPage = () => {
           ? a.title.localeCompare(b.title)
           : b.title.localeCompare(a.title),
       );
-  }, [filter, searchValue, sortDirection]);
+  }, [data, filter, searchValue, sortDirection]);
 
   return (
     <div>
       <Title className="mb-5">Tasks</Title>
+      {isPending && <Preloader />}
+      {isError && <p className="font-bold text-3xl">Error</p>}
 
       <div className="mb-3 flex">
         <div className="mr-5">
@@ -62,9 +76,7 @@ const TasksPage = () => {
             >
               In progress
             </CustomButton>
-            <CustomButton onClick={() => setFilter("done")}>
-              Done
-            </CustomButton>
+            <CustomButton onClick={() => setFilter("done")}>Done</CustomButton>
           </div>
         </div>
 
@@ -83,8 +95,10 @@ const TasksPage = () => {
           </div>
         </div>
       </div>
-
-      <TasksTable tasks={visibleTasks} />
+      {data.length === 0 && !isPending && !isError && (
+        <p className="font-bold text-3xl">Empty users</p>
+      )}
+      {data.length > 0 && <TasksTable tasks={visibleTasks} />}
     </div>
   );
 };
