@@ -24,7 +24,7 @@ const UsersPage = () => {
     queryKey: ["users"],
     queryFn: fetchUsers,
   });
-  
+
   const onSearch = (e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>) =>
     setSearchValue(e.target.value);
 
@@ -45,7 +45,6 @@ const UsersPage = () => {
 
   return (
     <div>
-      {isPending && <Preloader />}
       <Title className="mb-5">Users</Title>
       <div className="mb-3 flex">
         <div className="mr-5">
@@ -93,6 +92,7 @@ const UsersPage = () => {
           </div>
         </div>
       </div>
+      {isPending && <Preloader />}
       {isError && <p className="font-bold text-3xl">Error</p>}
       {data.length === 0 && !isPending && !isError && (
         <p className="font-bold text-3xl">Empty users</p>

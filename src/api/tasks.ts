@@ -14,3 +14,13 @@ export const fetchTaskById = async (id: string) => {
 
   return data;
 }
+
+export const fetchLatestTasks = async () => {
+  const { data } = await api.get<Task[]>("/tasks");
+
+  return data
+    .toSorted((firstTask, secondTask) =>
+      secondTask.id.localeCompare(firstTask.id, undefined, { numeric: true }),
+    )
+    .slice(0, 5);
+};

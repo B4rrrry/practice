@@ -47,8 +47,6 @@ const TasksPage = () => {
   return (
     <div>
       <Title className="mb-5">Tasks</Title>
-      {isPending && <Preloader />}
-      {isError && <p className="font-bold text-3xl">Error</p>}
 
       <div className="mb-3 flex">
         <div className="mr-5">
@@ -95,6 +93,9 @@ const TasksPage = () => {
           </div>
         </div>
       </div>
+      {isPending && <Preloader />}
+      {isError && <p className="font-bold text-3xl">Error</p>}
+
       {data.length === 0 && !isPending && !isError && (
         <p className="font-bold text-3xl">Empty users</p>
       )}
