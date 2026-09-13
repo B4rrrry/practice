@@ -13,7 +13,7 @@ interface UsersTableProps {
 const UsersTable: FC<UsersTableProps> = ({ users }) => {
   return (
     <div className={cls.wrapper}>
-      <table className={cls.table}>
+      <table data-testid="users-table" className={cls.table}>
         <thead>
           <tr>
             <th>Name</th>

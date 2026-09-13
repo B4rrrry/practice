@@ -6,6 +6,7 @@ import UsersPage from "../../pages/UsersPage/UsersPage";
 import UserPage from "../../pages/UserPage/UserPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import TaskPage from "../../pages/TaskPage/TaskPage";
+import { ErrorBoundary } from "../../components/ErrorBoundary/ErrorBoundary";
 
 const AppRouter = () => {
   return (
@@ -14,7 +15,14 @@ const AppRouter = () => {
         <Route element={<MainLayout />} path="/">
           <Route index element={<DashboardPage />} />
           <Route element={<TasksPage />} path="tasks" />
-          <Route element={<TaskPage />} path="tasks/:id" />
+          <Route
+            element={
+              <ErrorBoundary fallback={"Errorr"}>
+                <TaskPage />
+              </ErrorBoundary>
+            }
+            path="tasks/:id"
+          />
           <Route element={<UsersPage />} path="users" />
           <Route element={<UserPage />} path="users/:id" />
           <Route element={<NotFoundPage />} path="*" />

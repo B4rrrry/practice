@@ -29,11 +29,21 @@ const TaskPage = () => {
       </div>
     );
   }
-
+  function brokeFunc()    {
+    throw new Error("123");
+  }
   return (
     <div>
       {isPending && <Preloader />}
       {isError && <p className="font-bold text-3xl">Error</p>}
+      <CustomButton
+        onClick={() => {
+          throw new Error("123");
+        }}
+      >
+        123
+      </CustomButton>
+      <CustomButton onClick={brokeFunc}>brokeFunc</CustomButton>
       {task && (
         <>
           <Title className="mb-5">
