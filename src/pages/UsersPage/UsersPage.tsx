@@ -53,6 +53,7 @@ const UsersPage = () => {
             placeholder="Search..."
             className="mb-2.5 w-65"
             onChange={onSearch}
+            value={searchValue}
           />
         </div>
 
