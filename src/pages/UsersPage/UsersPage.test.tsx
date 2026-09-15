@@ -6,16 +6,20 @@ import {
   waitForElementToBeRemoved,
 } from "@testing-library/react";
 import TestWrapper from "../../tests/utils";
-import { fetchUsers } from "../../api/users";
+import { fetchUserById, fetchUsers } from "../../api/users";
 import userEvent from "@testing-library/user-event";
+import { MemoryRouter, Route, Routes } from "react-router";
+import UserPage from "../UserPage/UserPage";
 
 vi.mock(import("../../api/users"), () => ({
   fetchUsers: vi.fn(),
+  fetchUserById: vi.fn(),
 }));
 
 describe("tests UsersPage", () => {
   beforeEach(() => {
     vi.mocked(fetchUsers).mockReset();
+    vi.mocked(fetchUserById).mockReset();
   });
 
   test("first Test users load", async () => {
@@ -30,7 +34,11 @@ describe("tests UsersPage", () => {
     ]);
     render(
       <TestWrapper>
-        <UsersPage />
+        <MemoryRouter initialEntries={["/users"]}>
+          <Routes>
+            <Route path="/users" element={<UsersPage />} />
+          </Routes>
+        </MemoryRouter>
       </TestWrapper>,
     );
 
@@ -44,14 +52,17 @@ describe("tests UsersPage", () => {
     expect(usersTable).toHaveTextContent("alex@test.com");
     expect(screen.queryByTestId("preloader-page")).not.toBeInTheDocument();
   });
-  ("");
 
   test("empty users", async () => {
     vi.mocked(fetchUsers).mockResolvedValue([]);
 
     render(
       <TestWrapper>
-        <UsersPage />
+        <MemoryRouter initialEntries={["/users"]}>
+          <Routes>
+            <Route path="/users" element={<UsersPage />} />
+          </Routes>
+        </MemoryRouter>
       </TestWrapper>,
     );
 
@@ -76,7 +87,11 @@ describe("tests UsersPage", () => {
 
     render(
       <TestWrapper>
-        <UsersPage />
+        <MemoryRouter initialEntries={["/users"]}>
+          <Routes>
+            <Route path="/users" element={<UsersPage />} />
+          </Routes>
+        </MemoryRouter>
       </TestWrapper>,
     );
 
@@ -102,7 +117,11 @@ describe("tests UsersPage", () => {
     const user = userEvent.setup();
     render(
       <TestWrapper>
-        <UsersPage />
+        <MemoryRouter initialEntries={["/users"]}>
+          <Routes>
+            <Route path="/users" element={<UsersPage />} />
+          </Routes>
+        </MemoryRouter>
       </TestWrapper>,
     );
     let users = await screen.findByText("Alex");
@@ -134,16 +153,65 @@ describe("tests UsersPage", () => {
 
     render(
       <TestWrapper>
-        <UsersPage />
+        <MemoryRouter initialEntries={["/users"]}>
+          <Routes>
+            <Route path="/users" element={<UsersPage />} />
+          </Routes>
+        </MemoryRouter>
       </TestWrapper>,
     );
 
     await waitForElementToBeRemoved(screen.getByTestId("preloader-page"));
-    expect(screen.getByText('Alex')).toBeInTheDocument()
-    const activeBtn = screen.getByText('Active');
-    const blockedBtn = screen.getByText('Blocked');
+    expect(screen.getByText("Alex")).toBeInTheDocument();
+    const activeBtn = screen.getByText("Active");
     await userEvent.click(activeBtn);
-    expect(screen.queryByText('Alex')).not.toBeInTheDocument()
-    expect(screen.getByText('Dima')).toBeInTheDocument()
+    expect(screen.queryByText("Alex")).not.toBeInTheDocument();
+    expect(screen.getByText("Dima")).toBeInTheDocument();
+  });
+
+  test("test view user", async () => {
+    const user = userEvent.setup();
+
+    vi.mocked(fetchUsers).mockResolvedValue([
+      {
+        id: "2",
+        name: "Dima",
+        email: "dima@test.com",
+        role: "admin",
+        status: "active",
+      },
+    ]);
+    vi.mocked(fetchUserById).mockResolvedValue({
+      id: "2",
+      name: "Dima",
+      email: "dima@test.com",
+      role: "admin",
+      status: "active",
+    });
+
+    render(
+      <TestWrapper>
+        <MemoryRouter initialEntries={["/users"]}>
+          <Routes>
+            <Route path="/users" element={<UsersPage />} />
+            <Route path="/users/:id" element={<UserPage />} />
+          </Routes>
+        </MemoryRouter>
+      </TestWrapper>,
+    );
+
+    await waitForElementToBeRemoved(screen.getByTestId("preloader-page"));
+    expect(screen.getByTestId("users-table")).toBeInTheDocument();
+    expect(screen.getByText("Dima")).toBeInTheDocument();
+    screen.debug();
+
+    const viewBtn = await screen.findByRole("link", { name: "View" });
+
+    await user.click(viewBtn);
+
+    expect(await screen.findByText("Information")).toBeInTheDocument();
+    expect(screen.getByText("Dima")).toBeInTheDocument();
+    expect(screen.queryByTestId("users-table")).not.toBeInTheDocument();
+    expect(fetchUserById).toHaveBeenCalledWith("2");
   });
 });
