@@ -225,7 +225,7 @@ describe("tests UsersPage", () => {
         status: "active",
       },
       {
-        id: "1",
+        id: "2",
         name: "Dima",
         email: "dima@test.com",
         role: "admin",

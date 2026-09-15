@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { FC } from "react";
-import { BrowserRouter, MemoryRouter } from "react-router";
+
 
 interface TestWrapperProps {
   children: React.ReactNode;
