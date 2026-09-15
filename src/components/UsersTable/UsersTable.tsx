@@ -26,7 +26,7 @@ const UsersTable: FC<UsersTableProps> = ({ users }) => {
 
         <tbody>
           {users.map((user) => (
-            <tr key={user.id}>
+            <tr key={user.id} data-testid="table-row">
               <td>
                 <div className={cls.user}>
                   <span className={cls.avatar} aria-hidden="true">

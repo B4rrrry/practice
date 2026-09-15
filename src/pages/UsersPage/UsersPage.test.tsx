@@ -10,6 +10,7 @@ import { fetchUserById, fetchUsers } from "../../api/users";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router";
 import UserPage from "../UserPage/UserPage";
+import { ErrorBoundary } from "../../components/ErrorBoundary/ErrorBoundary";
 
 vi.mock(import("../../api/users"), () => ({
   fetchUsers: vi.fn(),
@@ -203,7 +204,6 @@ describe("tests UsersPage", () => {
     await waitForElementToBeRemoved(screen.getByTestId("preloader-page"));
     expect(screen.getByTestId("users-table")).toBeInTheDocument();
     expect(screen.getByText("Dima")).toBeInTheDocument();
-    screen.debug();
 
     const viewBtn = await screen.findByRole("link", { name: "View" });
 
@@ -213,5 +213,67 @@ describe("tests UsersPage", () => {
     expect(screen.getByText("Dima")).toBeInTheDocument();
     expect(screen.queryByTestId("users-table")).not.toBeInTheDocument();
     expect(fetchUserById).toHaveBeenCalledWith("2");
+  });
+
+  test("sort users in table", async () => {
+    vi.mocked(fetchUsers).mockResolvedValue([
+      {
+        id: "1",
+        name: "Alex",
+        email: "alex@test.com",
+        role: "admin",
+        status: "active",
+      },
+      {
+        id: "1",
+        name: "Dima",
+        email: "dima@test.com",
+        role: "admin",
+        status: "active",
+      },
+    ]);
+    const user = userEvent.setup();
+
+    render(
+      <TestWrapper>
+        <MemoryRouter initialEntries={["/users"]}>
+          <Routes>
+            <Route path="/users" element={<UsersPage />} />
+          </Routes>
+        </MemoryRouter>
+      </TestWrapper>,
+    );
+
+    await waitForElementToBeRemoved(screen.getByTestId("preloader-page"));
+    expect(screen.getByTestId("users-table")).toBeInTheDocument();
+
+    const sortBtnDesc = screen.getByText("Я - А");
+    await user.click(sortBtnDesc);
+
+    const sortUsersDesc = screen.getAllByTestId("table-row");
+    expect(sortUsersDesc).toHaveLength(2);
+    expect(sortUsersDesc[0]).toHaveTextContent("Dima");
+    expect(sortUsersDesc[1]).toHaveTextContent("Alex");
+
+    const sortBtnAsc = screen.getByText("А - Я");
+    await user.click(sortBtnAsc);
+
+    const sortUsersAsc = screen.getAllByTestId("table-row");
+    expect(sortUsersAsc).toHaveLength(2);
+    expect(sortUsersAsc[0]).toHaveTextContent("Alex");
+    expect(sortUsersAsc[1]).toHaveTextContent("Dima");
+  });
+
+  test("error boundary", () => {
+    const BrokenComponent = () => {
+      throw new Error("Error");
+    };
+
+    render(
+      <ErrorBoundary fallback="Error">
+        <BrokenComponent />
+      </ErrorBoundary>,
+    );
+    expect(screen.getByText('Error')).toBeInTheDocument()
   });
 });
