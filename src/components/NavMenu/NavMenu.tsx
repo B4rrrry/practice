@@ -12,6 +12,9 @@ const NavMenu = () => {
       <CustomLink to="/tasks" className="mb-2.5">
         Tasks
       </CustomLink>
+      <CustomLink to="/auth" className="mb-2.5">
+        Auth
+      </CustomLink>
     </div>
   );
 };

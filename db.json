@@ -1,17 +1,17 @@
 {
   "users": [
-    { "id": "1", "name": "Alex Morgan", "email": "alex.morgan@example.com", "role": "admin", "status": "active" },
-    { "id": "2", "name": "Emma Wilson", "email": "emma.wilson@example.com", "role": "manager", "status": "active" },
-    { "id": "3", "name": "Daniel Kim", "email": "daniel.kim@example.com", "role": "user", "status": "blocked" },
-    { "id": "4", "name": "Sophia Brown", "email": "sophia.brown@example.com", "role": "manager", "status": "active" },
-    { "id": "5", "name": "Liam Davis", "email": "liam.davis@example.com", "role": "user", "status": "active" },
-    { "id": "6", "name": "Olivia Martinez", "email": "olivia.martinez@example.com", "role": "user", "status": "blocked" },
-    { "id": "7", "name": "Noah Anderson", "email": "noah.anderson@example.com", "role": "manager", "status": "active" },
-    { "id": "8", "name": "Ava Thompson", "email": "ava.thompson@example.com", "role": "user", "status": "active" },
-    { "id": "9", "name": "Ethan Taylor", "email": "ethan.taylor@example.com", "role": "user", "status": "blocked" },
-    { "id": "10", "name": "Mia Clark", "email": "mia.clark@example.com", "role": "admin", "status": "active" },
-    { "id": "11", "name": "Lucas Lewis", "email": "lucas.lewis@example.com", "role": "user", "status": "active" },
-    { "id": "12", "name": "Isabella Walker", "email": "isabella.walker@example.com", "role": "manager", "status": "active" }
+    { "id": "1", "name": "Alex Morgan", "email": "alex.morgan@example.com", "password": "Test123!", "role": "admin", "status": "active" },
+    { "id": "2", "name": "Emma Wilson", "email": "emma.wilson@example.com", "password": "Test123!", "role": "manager", "status": "active" },
+    { "id": "3", "name": "Daniel Kim", "email": "daniel.kim@example.com", "password": "Test123!", "role": "user", "status": "blocked" },
+    { "id": "4", "name": "Sophia Brown", "email": "sophia.brown@example.com", "password": "Test123!", "role": "manager", "status": "active" },
+    { "id": "5", "name": "Liam Davis", "email": "liam.davis@example.com", "password": "Test123!", "role": "user", "status": "active" },
+    { "id": "6", "name": "Olivia Martinez", "email": "olivia.martinez@example.com", "password": "Test123!", "role": "user", "status": "blocked" },
+    { "id": "7", "name": "Noah Anderson", "email": "noah.anderson@example.com", "password": "Test123!", "role": "manager", "status": "active" },
+    { "id": "8", "name": "Ava Thompson", "email": "ava.thompson@example.com", "password": "Test123!", "role": "user", "status": "active" },
+    { "id": "9", "name": "Ethan Taylor", "email": "ethan.taylor@example.com", "password": "Test123!", "role": "user", "status": "blocked" },
+    { "id": "10", "name": "Mia Clark", "email": "mia.clark@example.com", "password": "Test123!", "role": "admin", "status": "active" },
+    { "id": "11", "name": "Lucas Lewis", "email": "lucas.lewis@example.com", "password": "Test123!", "role": "user", "status": "active" },
+    { "id": "12", "name": "Isabella Walker", "email": "isabella.walker@example.com", "password": "Test123!", "role": "manager", "status": "active" }
   ],
   "tasks": [
     { "id": "1", "title": "Prepare monthly report", "status": "in-progress", "priority": "high", "userId": "1", "assignee": "Alex Morgan" },
