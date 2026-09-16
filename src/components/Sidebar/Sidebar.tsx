@@ -7,14 +7,14 @@ const Sidebar = () => {
   const isShowSidebarInitValue = useMainStore((s) => s.isShowSidebar);
   const toggleSibebar = useMainStore((s) => s.toggleSidebar);
 
-  const [showSidebar, setShowSidebar] = useState<boolean>(
+  /* const [showSidebar, setShowSidebar] = useState<boolean>(
     isShowSidebarInitValue,
   );
-
-  const isShowSidebar = showSidebar ? "w-40" : "w-20";
+ */
+  const isShowSidebar = isShowSidebarInitValue ? "w-40" : "w-20";
   const onHide = () => {
-    setShowSidebar((prev) => !prev);
-    toggleSibebar(!showSidebar);
+    // setShowSidebar((prev) => !prev);
+    toggleSibebar(!isShowSidebarInitValue);
   };
 
   return (

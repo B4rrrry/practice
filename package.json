@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "json-server --watch db.json --port 3001",
-    "component": "node scripts/create-component.mjs"
+    "component": "node scripts/create-component.mjs",
+    "pw:ui": "npx playwright test --ui"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
