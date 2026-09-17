@@ -1,4 +1,4 @@
-import test, { expect } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 test.describe("test users page", () => {
   test("test users table, view first user", async ({ page }) => {
@@ -60,7 +60,7 @@ test("test navigation", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Tasks" })).toBeVisible();
 });
 
-test("404 not found page", async ({ page }) => {
+test("test 404 not found page", async ({ page }) => {
   await page.goto("http://localhost:5173/userrrrr");
   await expect(page.getByText("NotFoundPage")).toBeVisible();
 });
