@@ -9,9 +9,9 @@
       "status": "active"
     },
     {
-      "id": "1",
-      "name": "Admin",
-      "email": "admin",
+      "id": "13",
+      "name": "Долбоёб ",
+      "email": "admin@mail.ru",
       "password": "admin",
       "role": "admin",
       "status": "active"
@@ -103,6 +103,134 @@
       "password": "Test123!",
       "role": "manager",
       "status": "active"
+    },
+    {
+      "name": "DimaAdmin",
+      "email": "admindima@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "BA1VhyqPQGs"
+    },
+    {
+      "name": "dimka",
+      "email": "123321@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "4rFT72k_JPw"
+    },
+    {
+      "name": "123333",
+      "email": "123123@mail.ru",
+      "password": "123322",
+      "role": "user",
+      "status": "active",
+      "id": "Pz3GsELE6Qo"
+    },
+    {
+      "name": "1231231",
+      "email": "2131231@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "_2-Xm8s7ksI"
+    },
+    {
+      "name": "1231231",
+      "email": "2131231@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "2_Gqp2wJ8mw"
+    },
+    {
+      "name": "qsqwqww",
+      "email": "sldfskdl@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "tQR1R32Fv7I"
+    },
+    {
+      "name": "ывыа",
+      "email": "asasasa@mail.ru",
+      "password": "вдлапвдалдв",
+      "role": "user",
+      "status": "active",
+      "id": "t8m5N-aXokI"
+    },
+    {
+      "name": "dfdfdfd",
+      "email": "dfd@mail.ru",
+      "password": "123321231",
+      "role": "user",
+      "status": "active",
+      "id": "jLsxFcfYqfs"
+    },
+    {
+      "name": "dfdfdfd",
+      "email": "dfd@mail.ru",
+      "password": "123321231",
+      "role": "user",
+      "status": "active",
+      "id": "8TC9eElGzsM"
+    },
+    {
+      "name": "1231231",
+      "email": "12123121@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "D1tNufS9VRs"
+    },
+    {
+      "name": "sasa",
+      "email": "asasa@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "1h4goF4ZQX8"
+    },
+    {
+      "name": "sasa",
+      "email": "asasa@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "PdvlCzfTSw8"
+    },
+    {
+      "name": "sasa",
+      "email": "asasa@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "ZlvSgAfRous"
+    },
+    {
+      "name": "dsgfdf[=gpdoglpf",
+      "email": "ledrkd@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "oCdOJQCbbPU"
+    },
+    {
+      "name": "fdfasa",
+      "email": "dffdf@mail.ru",
+      "password": "123321",
+      "role": "user",
+      "status": "active",
+      "id": "BoiDhMuxf5I"
+    },
+    {
+      "name": "sljkofsdkgjdfkgj",
+      "email": "kdjfjdskfklsdjfd@mail.ru",
+      "password": "dkjfdfldfkd",
+      "role": "user",
+      "status": "active",
+      "id": "iOhtz7JcDNQ"
     }
   ],
   "tasks": [
@@ -256,5 +384,6 @@
     "activeUsers": 9,
     "tasksCount": 18,
     "completedTasks": 7
-  }
+  },
+  "$schema": "./node_modules/json-server/schema.json"
 }
