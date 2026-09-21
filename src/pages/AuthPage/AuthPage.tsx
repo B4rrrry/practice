@@ -1,6 +1,8 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import cls from "./AuthPage.module.scss";
 import { fetchUserByEmailPassword } from "../../api/users";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 interface Input {
   fName: string;
@@ -8,6 +10,14 @@ interface Input {
 }
 
 const AuthPage = () => {
+
+  const zodSchema = z.object({
+    fName: z.email('Некорректно введен email'),
+    password: z.string().min(4,{
+      error:'Пароль должен состоять минимум из 4 символов'
+    })
+  });
+
   const {
     register,
     handleSubmit,
@@ -18,6 +28,7 @@ const AuthPage = () => {
       fName: "",
       password: "",
     },
+    resolver: zodResolver(zodSchema),
   });
 
   const onSubmit: SubmitHandler<Input> = async (data) => {

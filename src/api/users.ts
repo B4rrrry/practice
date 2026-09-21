@@ -28,3 +28,21 @@ export const fetchUserByEmailPassword = async (
 
   return data;
 };
+
+export const createUser = async (newUser: Omit<User, "id">) => {
+  const { data } = await api.post<User>("/users", newUser);
+
+  return data;
+};
+
+export const editUser = async ({
+  id,
+  newUser,
+}: {
+  id: string;
+  newUser: Omit<User, "id">;
+}) => {
+  const { data } = await api.patch<User>(`/users/${id}`, newUser);
+
+  return data;
+};

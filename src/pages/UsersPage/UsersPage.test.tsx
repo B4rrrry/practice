@@ -67,7 +67,7 @@ describe("tests UsersPage", () => {
       </TestWrapper>,
     );
 
-    const preloader = await waitForElementToBeRemoved(
+    await waitForElementToBeRemoved(
       screen.getByTestId("preloader-page"),
     );
 
@@ -125,7 +125,7 @@ describe("tests UsersPage", () => {
         </MemoryRouter>
       </TestWrapper>,
     );
-    let users = await screen.findByText("Alex");
+    const users = await screen.findByText("Alex");
     expect(users).toHaveTextContent("Alex");
     const searchInput = screen.getByPlaceholderText("Search...");
     await user.type(searchInput, "dima");

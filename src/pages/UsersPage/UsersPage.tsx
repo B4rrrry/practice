@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import CustomSearch from "../../components/CustomSearch/CustomSearch";
 import Title from "../../components/Title/Title";
 import UsersTable from "../../components/UsersTable/UsersTable";
-import { users } from "../../mockData/users";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import Preloader from "../../components/Preloader/Preloader";
 import { useQuery } from "@tanstack/react-query";

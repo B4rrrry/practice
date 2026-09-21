@@ -49,6 +49,7 @@ const UsersTable: FC<UsersTableProps> = ({ users }) => {
               <td>
                 <div className={cls.actions}>
                   <CustomLink to={`/users/${user.id}`}>View</CustomLink>
+                  <CustomLink to={`/users/${user.id}/edit`}>Edit</CustomLink>
                 </div>
               </td>
             </tr>

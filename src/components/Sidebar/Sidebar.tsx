@@ -1,4 +1,3 @@
-import { useState } from "react";
 import CustomButton from "../CustomButton/CustomButton";
 import NavMenu from "../NavMenu/NavMenu";
 import { useMainStore } from "../../store/store";

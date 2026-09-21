@@ -7,7 +7,9 @@ import UserPage from "../../pages/UserPage/UserPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import TaskPage from "../../pages/TaskPage/TaskPage";
 import { ErrorBoundary } from "../../components/ErrorBoundary/ErrorBoundary";
-import AuthPage from "../../components/AuthPage/AuthPage";
+import AuthPage from "../../pages/AuthPage/AuthPage";
+import RegisterUserPage from "../../pages/RegisterUserPage/RegisterUserPage";
+import EditUserPage from "../../pages/EditUserPage/EditUserPage";
 
 const AppRouter = () => {
   return (
@@ -25,6 +27,9 @@ const AppRouter = () => {
             path="tasks/:id"
           />
           <Route element={<UsersPage />} path="users" />
+          <Route element={<RegisterUserPage />} path="users/register" />
+          <Route element={<EditUserPage />} path="users/edit" />
+          <Route element={<EditUserPage />} path="users/:id/edit" />
           <Route element={<UserPage />} path="users/:id" />
           <Route element={<AuthPage />} path="auth" />
           <Route element={<NotFoundPage />} path="*" />

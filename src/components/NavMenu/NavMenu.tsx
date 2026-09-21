@@ -9,6 +9,12 @@ const NavMenu = () => {
       <CustomLink to="/users" className="mb-2.5">
         Users
       </CustomLink>
+      <CustomLink to="/users/register" className="mb-2.5">
+        Register user
+      </CustomLink>
+      <CustomLink to="/users/edit" className="mb-2.5">
+        Edit user
+      </CustomLink>
       <CustomLink to="/tasks" className="mb-2.5">
         Tasks
       </CustomLink>
