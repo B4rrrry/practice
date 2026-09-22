@@ -15,7 +15,7 @@ const Modal: FC<ModalProps> = (props) => {
  
 
   const modalContainer = document.getElementById("modal-root");
-  // modalContainer!.style.display = 'flex'
+  modalContainer!.style.display = 'flex'
 
   return createPortal(
     <div className={`${cls.Modal} ${className}`}>
