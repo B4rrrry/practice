@@ -23,7 +23,7 @@ const UsersTable: FC<UsersTableProps> = ({ users }) => {
 
   const onCloseHandler = () => {
     setIsShowModal((prev) => !prev);
-    modalContainer!.style.display = "none";
+    // modalContainer!.style.display = "none";
     setSelectedDeleteUser(null);
   };
 
